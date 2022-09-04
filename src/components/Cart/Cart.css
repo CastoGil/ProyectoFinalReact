@@ -1,0 +1,16 @@
+.carrito{
+    font-size: 3rem;
+    color: white;
+    width: 100%;
+    background-color:rgb(255,193,7)
+}
+.carritovacio{
+    height: 400px;
+}
+.cart{
+    background-color: beige;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}

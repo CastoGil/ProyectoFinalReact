@@ -1,0 +1,66 @@
+.footer { 
+    width: 100%; 
+    background-color:rgb(255,193,7); 
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 80px; 
+}
+
+.footer .grupo1 { 
+    width: 100%;
+    max-width: 1200px; 
+    margin: auto; 
+    display: 
+    -ms-grid; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-gap: 50px; 
+    padding: 10px 0px; 
+}
+
+.footer .grupo1 .figure { 
+    width: 100%; 
+    height: 100%; 
+    display: -webkit-box;
+    display: -ms-flexbox; 
+    display: flex; 
+    -webkit-box-pack: center; 
+    -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; 
+    -ms-flex-align: center; 
+    align-items: center; 
+}
+
+.footer .grupo1 .figure .logo {
+  width: 250px;
+  
+}
+img.logo{
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 170px;
+}
+
+
+
+.footer .grupo1 .caja .sobre { margin-bottom: 25px; font-size: 25px; text-align: center; border-bottom-style: solid; border-color: black; padding: 20px;}
+
+.footer .grupo1 .caja .info { margin-bottom: 10px; text-align: justify; }
+
+.footer .grupo1 .caja .siguenos { margin-bottom: 25px; font-size: 25px; text-align: center; border-bottom-style: solid; border-color: black; padding: 20px;}
+
+.footer .grupo1 .caja .redes a { font-size: 25px; display: inline-block; text-decoration: none; width: 45px; height: 45px; line-height: 45px; color: rgb(0, 0, 0); margin-left: 20px; background-color:rgb(255, 255, 255); text-align: center; transition: all 300ms ease; border-radius: 10px; }
+.footer .grupo1 .caja .redes a:hover{
+    background-color: greenyellow
+    
+}
+.footer .grupo-2 { background-color:rgb(0, 0, 0); text-align: center; color: white; }
+
+.footer .grupo-2 small { font-size: 15px; }
+
+@media screen and (max-width:800px){
+    .grupo1{
+        width: 90%;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+        padding: 35px 0px;
+}  }

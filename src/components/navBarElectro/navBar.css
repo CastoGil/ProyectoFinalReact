@@ -1,0 +1,17 @@
+a, a.active{
+    text-decoration: none!important;
+    color: black!important;;
+}
+.logo, a.logo.active{
+    color: white !important;
+    font-size: 25px;
+    
+}
+.cantidad{
+    margin: 5px;
+}
+.imglogo{
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 60px;
+}

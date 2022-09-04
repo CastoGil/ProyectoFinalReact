@@ -1,0 +1,40 @@
+.contenedor-principal{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    border-style: solid;
+    border-radius: 90px;
+    border-color: rgb(255, 255, 255);
+    margin: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.87);
+}
+.btn-primary{
+    margin: 5px;
+}
+.imagenFondo{
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}    
+.titulo-product{
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: rgb(43, 43, 179);
+    
+}
+.title{
+    border-bottom: solid;
+}
+.disponible{
+    border-top: solid;  
+    background-color: rgb(241, 241, 235);
+}
+.contenedor-info{
+    width: 80%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+}
