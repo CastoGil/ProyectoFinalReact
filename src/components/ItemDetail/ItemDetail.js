@@ -1,12 +1,12 @@
 import "./ItemDetail.css"
 import Card from 'react-bootstrap/Card';
 import ItemCount from "../ItemCount/ItemCount";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/esm/Button";
+import Button from "react-bootstrap/Button";
 import { useCartContext } from "../Context/CartContext";
 
-export default function ItemDetail({product}){
+const ItemDetail = memo(({product}) => {
     const [goToCart, setGoToCart]= useState(false)
     const {addProduct} = useCartContext()
     
@@ -70,4 +70,5 @@ export default function ItemDetail({product}){
             </div>
         </div></>
     )
-}
+});
+export default ItemDetail;

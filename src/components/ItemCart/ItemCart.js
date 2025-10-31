@@ -4,7 +4,7 @@ import './ItemCart.css'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Swal from 'sweetalert2'
-const ItemCart=({product})=>{
+const ItemCart=React.memo(({product})=>{
     const { removeProduct }= useCartContext();
     return(
         <div className="tarjet">
@@ -43,5 +43,5 @@ const ItemCart=({product})=>{
           </Card.Body>
         </Card></div>
     )
-}
+})
 export default ItemCart;

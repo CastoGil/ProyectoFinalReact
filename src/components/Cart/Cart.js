@@ -1,13 +1,13 @@
 import "./Cart.css"
 import { useCartContext } from "../Context/CartContext"
 import { Link } from "react-router-dom"
-import Button from "react-bootstrap/esm/Button"
+import Button from "react-bootstrap/Button"
 import ItemCart from "../ItemCart/ItemCart"
-import { collection, getFirestore , addDoc } from "firebase/firestore"
+import { createOrder } from "../../Firebase/config"
 import Swal from 'sweetalert2'
 
 export default function Cart() {
-  const {cart , totalPrice, clearCart, clearCar}= useCartContext();
+  const {cart , totalPrice, clearCart, clearCartWithAlert}= useCartContext();
     
     const order= {
         buyer: {
@@ -21,9 +21,7 @@ export default function Cart() {
     }
     const handleClick = () => {
      
-        const db= getFirestore()
-        const ordersCollection= collection(db, 'orders')
-        addDoc(ordersCollection, order).then(({id}) =>  Swal.fire({
+        createOrder(order).then(({id}) =>  Swal.fire({
           position: 'center',
           icon: 'success',
           title:'Tu compra ha sido Procesada con el codigo',
@@ -31,7 +29,7 @@ export default function Cart() {
           footer: '<p>Te enviaremos un correo con todos los detalles!</p>',
           timer: 7500
               }))
-        clearCar()
+        clearCart()
     }
   
   if (cart.length === 0){
@@ -59,7 +57,7 @@ export default function Cart() {
                 </svg></Button></Link>
                
                 <Button variant="info" onClick={handleClick}>Emitir Compra</Button>
-                <Button variant="info" onClick={clearCart}>Eliminar Carrito</Button>
+                <Button variant="info" onClick={clearCartWithAlert}>Eliminar Carrito</Button>
        </div>
        </>
     )
