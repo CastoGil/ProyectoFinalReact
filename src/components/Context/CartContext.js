@@ -23,8 +23,8 @@ const CartProvider=({children})=>{
     const totalPrice=()=>{ 
         return cart.reduce((prev, act)=> prev + act.quantity * act.price, 0)};
     
-    const clearCar =() => setCart([])   
-    const clearCart =() => { 
+    const clearCart =() => setCart([])
+    const clearCartWithAlert =() => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
@@ -68,7 +68,7 @@ const CartProvider=({children})=>{
     const removeProduct = (id) => setCart(cart.filter(product => product.id !== id));
 
     return(
-        <CartContext.Provider value={{ clearCart, isInCart, removeProduct, addProduct, totalProducts,totalPrice, cart, clearCar}}>
+        <CartContext.Provider value={{ clearCartWithAlert, isInCart, removeProduct, addProduct, totalProducts,totalPrice, cart, clearCart}}>
             {children}
         </CartContext.Provider>
     )

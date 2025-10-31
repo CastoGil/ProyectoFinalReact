@@ -1,10 +1,10 @@
 import "./Item.css"
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import React from 'react';
 
 
-
-const Item=({info})=>{
+const Item= React.memo(({info})=>{
     return(
         <>
         <div className="contenedor-principal">
@@ -23,5 +23,5 @@ const Item=({info})=>{
            
         </div></>
     )
-}
+})
 export default Item;
