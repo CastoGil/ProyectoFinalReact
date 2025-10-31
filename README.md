@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Electro-Commerce: Tienda Online de Productos Electrónicos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+¡Bienvenido a Electro-Commerce! Esta es una aplicación de comercio electrónico desarrollada con React, diseñada para ofrecer una experiencia de compra fluida y moderna para productos electrónicos.
 
-## Available Scripts
+## ✨ Características Principales
 
-In the project directory, you can run:
+-   **Catálogo de Productos:** Navega por una amplia variedad de productos electrónicos, visualiza los detalles y verifica la disponibilidad.
+-   **Carrito de Compras:** Añade y gestiona productos en tu carrito de compras de forma sencilla e intuitiva.
+-   **Proceso de Compra:** Realiza pedidos de forma segura. Nuestra integración con Firebase garantiza que tus órdenes se procesen de manera confiable.
+-   **Diseño Responsivo:** Disfruta de una experiencia de usuario consistente en cualquier dispositivo, ya sea en tu computadora de escritorio, tablet o teléfono móvil.
 
-### `npm start`
+## 🚀 Tecnologías Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Este proyecto fue construido utilizando las siguientes tecnologías:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   **[React](https://reactjs.org/):** Una biblioteca de JavaScript para construir interfaces de usuario.
+-   **[React Router](https://reactrouter.com/):** Para la navegación y el enrutamiento dentro de la aplicación.
+-   **[React Bootstrap](https://react-bootstrap.github.io/):** Componentes de UI pre-construidos y estilizados.
+-   **[Firebase](https://firebase.google.com/):** Utilizado como backend para la gestión de la base de datos de productos y el procesamiento de órdenes en tiempo real.
+-   **[SweetAlert2](https://sweetalert2.github.io/):** Para mostrar notificaciones y alertas elegantes y personalizables.
 
-### `npm test`
+## 📦 Instalación y Configuración
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
-### `npm run build`
+1.  **Clona el Repositorio**
+    ```bash
+    git clone https://github.com/tu-usuario/electro-commerce.git
+    cd electro-commerce
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2.  **Instala las Dependencias**
+    ```bash
+    npm install
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3.  **Configura las Variables de Entorno de Firebase**
+    Crea un archivo `.env` en la raíz del proyecto y añade tus credenciales de Firebase. Puedes encontrar estas credenciales en la consola de tu proyecto de Firebase.
+    ```env
+    REACT_APP_FIREBASE_API_KEY="tu-api-key"
+    REACT_APP_FIREBASE_AUTH_DOMAIN="tu-auth-domain"
+    REACT_APP_FIREBASE_PROJECT_ID="tu-project-id"
+    REACT_APP_FIREBASE_STORAGE_BUCKET="tu-storage-bucket"
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID="tu-messaging-sender-id"
+    REACT_APP_FIREBASE_APP_ID="tu-app-id"
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4.  **Inicia la Aplicación**
+    ```bash
+    npm start
+    ```
+    La aplicación se abrirá en [http://localhost:3000](http://localhost:3000).
 
-### `npm run eject`
+## 📜 Scripts Disponibles
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   `npm start`: Inicia la aplicación en modo de desarrollo.
+-   `npm test`: Ejecuta las pruebas en modo interactivo.
+-   `npm run build`: Compila la aplicación para producción en la carpeta `build`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+¡Gracias por visitar Electro-Commerce! Si tienes alguna pregunta o sugerencia, no dudes in contactarnos.
