@@ -14,7 +14,7 @@ function NavBarElectro() {
       {[false].map((expand) => (
         <Navbar key={expand} bg="warning" variant="dark" expand={expand} className="">
           <Container fluid>
-            <NavLink className="logo" to='/'><img className="imglogo" src="https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></img>ELECTROLIBRE</NavLink>
+            <NavLink className="logo" to='/'><img className="imglogo" src="https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Logo ElectroLibre"></img>ELECTROLIBRE</NavLink>
             
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas 

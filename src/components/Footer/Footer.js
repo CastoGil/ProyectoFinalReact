@@ -9,8 +9,8 @@ export default function Footer(){
             <div className="grupo1">
                 <div className="caja">
                     <figure>
-                        <a href="#">
-                            <img className="logo" src="https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></img>
+                        <a href="/" aria-label="Ir al inicio">
+                            <img className="logo" src="https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Logo ElectroLibre"></img>
                         </a>
                     </figure> 
                  </div>
@@ -22,11 +22,11 @@ export default function Footer(){
                     <div className="caja">
                     <h2 className="siguenos">Siguenos en Redes Sociales</h2>
                     <div className="redes">
-                    <a href="https://www.instagram.com/" target="_blanc."><FaInstagram/></a>
-                    <a href="https://www.facebook.com/" target="_blanc."><FaFacebookSquare/></a>
-                     <a href="https://twitter.com/" target="_blanc."><FaTwitter/></a>
-                    <a href="https://www.twitch.tv/"  target="_blanc."><FaTwitch/></a>
-                    <a href="https://web.telegram.org/k/" target="_blanc."><FaTelegram/></a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram/></a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookSquare/></a>
+                     <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter/></a>
+                    <a href="https://www.twitch.tv/"  target="_blank" rel="noopener noreferrer" aria-label="Twitch"><FaTwitch/></a>
+                    <a href="https://web.telegram.org/k/" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><FaTelegram/></a>
             </div>
         </div>
      </div>
@@ -37,4 +37,3 @@ export default function Footer(){
         </>
        )
 } 
-
