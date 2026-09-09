@@ -16,7 +16,6 @@ const CartProvider=({children})=>{
         setCart([...cart, {...item, quantity}])
     }
     }
-    console.log('carrito:',cart)
 
     const totalProducts=()=> cart.reduce((acumulador, productoActual)=> acumulador + productoActual.quantity, 0);
 

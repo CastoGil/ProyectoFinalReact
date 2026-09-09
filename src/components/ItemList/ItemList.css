@@ -1,0 +1,8 @@
+.lista-vacia {
+  width: 100%;
+  border: 1px dashed var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  background: var(--surface);
+}

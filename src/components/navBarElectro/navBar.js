@@ -6,63 +6,66 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CartWidget from './CartWidget';
-import { NavLink } from 'react-router-dom'
-import './navBar.css'
+import { NavLink } from 'react-router-dom';
+import './navBar.css';
+
 function NavBarElectro() {
   return (
-    <>
-      {[false].map((expand) => (
-        <Navbar key={expand} bg="warning" variant="dark" expand={expand} className="">
-          <Container fluid>
-            <NavLink className="logo" to='/'><img className="imglogo" src="https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Logo ElectroLibre"></img>ELECTROLIBRE</NavLink>
-            
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas 
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  ElectroLibre
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-              <Nav  className="justify-content-end flex-grow-1 pe-3">
-                  <NavLink to='/'>Inicio</NavLink>
-                  
-                  <NavDropdown
-                    title="Productos"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    <NavLink to='/'>Lista de Productos</NavLink> <NavDropdown.Divider />
-                    <NavLink to='/category/celulares-tablet'>Celulares/Tablet</NavLink> <NavDropdown.Divider />
-                    <NavLink to='/category/camaras-drones'>Camaras/Drones</NavLink> <NavDropdown.Divider />
-                    <NavLink to='/category/computadoras-lapto'>Computadoras/Lapto</NavLink> <NavDropdown.Divider />
-                  </NavDropdown>
-                  <Nav.Link href="#">Nosotros</Nav.Link>
-                  <Nav.Link href="#">Contacto</Nav.Link>
-                </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Buscador"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Buscador</Button>
-                </Form><br></br>
-                <NavLink to='/cart'>
-                <CartWidget></CartWidget>
-                </NavLink>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      ))}
-    </>
+    <Navbar expand='lg' className='navbar-elegant' sticky='top'>
+      <Container fluid>
+        <NavLink className='logo' to='/'>
+          <img
+            className='imglogo'
+            src='https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1'
+            alt='Logo ElectroLibre'
+          />
+          ELECTROLIBRE
+        </NavLink>
+
+        <Navbar.Toggle aria-controls='offcanvasNavbar' />
+        <Navbar.Offcanvas id='offcanvasNavbar' aria-labelledby='offcanvasNavbarLabel' placement='end'>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title id='offcanvasNavbarLabel'>ElectroLibre</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className='menu-links justify-content-end flex-grow-1'>
+              <NavLink to='/'>Inicio</NavLink>
+
+              <NavDropdown title='Productos' id='products-dropdown'>
+                <NavLink className='dropdown-link' to='/'>Lista de Productos</NavLink>
+                <NavDropdown.Divider />
+                <NavLink className='dropdown-link' to='/category/celulares-tablet'>Celulares/Tablet</NavLink>
+                <NavDropdown.Divider />
+                <NavLink className='dropdown-link' to='/category/camaras-drones'>Cámaras/Drones</NavLink>
+                <NavDropdown.Divider />
+                <NavLink className='dropdown-link' to='/category/computadoras-lapto'>Computadoras/Laptop</NavLink>
+              </NavDropdown>
+
+              <NavLink to='/nosotros'>Nosotros</NavLink>
+              <NavLink to='/contacto'>Contacto</NavLink>
+            </Nav>
+
+            <Form className='search-box d-flex' role='search'>
+              <Form.Control
+                type='search'
+                placeholder='Buscar próximamente'
+                className='me-2'
+                aria-label='Search'
+                disabled
+              />
+              <Button variant='primary' disabled>
+                Buscar
+              </Button>
+            </Form>
+
+            <NavLink to='/cart'>
+              <CartWidget />
+            </NavLink>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
+      </Container>
+    </Navbar>
   );
 }
-
 
 export default NavBarElectro;
