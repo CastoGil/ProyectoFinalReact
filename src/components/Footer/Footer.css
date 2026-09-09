@@ -1,66 +1,84 @@
-.footer { 
-    width: 100%; 
-    background-color:rgb(255,193,7); 
-    color: white; 
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 80px; 
+.footer {
+  width: 100%;
+  margin-top: 2rem;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
 }
 
-.footer .grupo1 { 
-    width: 100%;
-    max-width: 1200px; 
-    margin: auto; 
-    display: 
-    -ms-grid; 
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-gap: 50px; 
-    padding: 10px 0px; 
+.footer .grupo1 {
+  width: min(1200px, 100% - 2rem);
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 1.5rem 0;
 }
 
-.footer .grupo1 .figure { 
-    width: 100%; 
-    height: 100%; 
-    display: -webkit-box;
-    display: -ms-flexbox; 
-    display: flex; 
-    -webkit-box-pack: center; 
-    -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; 
-    -ms-flex-align: center; 
-    align-items: center; 
+.footer .grupo1 figure {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.footer .grupo1 .figure .logo {
-  width: 250px;
-  
-}
-img.logo{
-    margin-top: 10px;
-    border-radius: 10px;
-    width: 170px;
+img.logo {
+  border-radius: 12px;
+  width: 170px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
 }
 
-
-
-.footer .grupo1 .caja .sobre { margin-bottom: 25px; font-size: 25px; text-align: center; border-bottom-style: solid; border-color: black; padding: 20px;}
-
-.footer .grupo1 .caja .info { margin-bottom: 10px; text-align: justify; }
-
-.footer .grupo1 .caja .siguenos { margin-bottom: 25px; font-size: 25px; text-align: center; border-bottom-style: solid; border-color: black; padding: 20px;}
-
-.footer .grupo1 .caja .redes a { font-size: 25px; display: inline-block; text-decoration: none; width: 45px; height: 45px; line-height: 45px; color: rgb(0, 0, 0); margin-left: 20px; background-color:rgb(255, 255, 255); text-align: center; transition: all 300ms ease; border-radius: 10px; }
-.footer .grupo1 .caja .redes a:hover{
-    background-color: greenyellow
-    
+.footer .grupo1 .caja .sobre,
+.footer .grupo1 .caja .siguenos {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #f8fafc;
 }
-.footer .grupo-2 { background-color:rgb(0, 0, 0); text-align: center; color: white; }
 
-.footer .grupo-2 small { font-size: 15px; }
+.footer .grupo1 .caja .info {
+  margin-bottom: 10px;
+  text-align: left;
+  color: #cbd5e1;
+}
 
-@media screen and (max-width:800px){
-    .grupo1{
-        width: 90%;
-        grid-template-columns: 1fr;
-        grid-gap: 30px;
-        padding: 35px 0px;
-}  }
+.footer .grupo1 .caja .redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.footer .grupo1 .caja .redes a {
+  font-size: 1.2rem;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  color: #0f172a;
+  background-color: #f8fafc;
+  align-items: center;
+  justify-content: center;
+  transition: all 250ms ease;
+  border-radius: 10px;
+}
+
+.footer .grupo1 .caja .redes a:hover {
+  background-color: #93c5fd;
+  transform: translateY(-2px);
+}
+
+.footer .grupo-2 {
+  background-color: #020617;
+  text-align: center;
+  color: #cbd5e1;
+  padding: 0.9rem;
+}
+
+.footer .grupo-2 small {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 850px) {
+  .footer .grupo1 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
