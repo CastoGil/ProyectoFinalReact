@@ -17,6 +17,7 @@ export default function Cart() {
     address: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isValidated, setIsValidated] = useState(false)
 
     const order = useMemo(() => ({
       buyer: {
@@ -34,18 +35,26 @@ export default function Cart() {
       return Boolean(order.buyer.name && order.buyer.phone && order.buyer.address && isEmailValid)
     }
 
+    const fieldErrors = useMemo(() => ({
+      name: !order.buyer.name ? 'Ingresá tu nombre y apellido.' : '',
+      email: !order.buyer.email
+        ? 'Ingresá tu email.'
+        : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(order.buyer.email)
+          ? ''
+          : 'Ingresá un email válido.',
+      phone: !order.buyer.phone ? 'Ingresá un teléfono de contacto.' : '',
+      address: !order.buyer.address ? 'Ingresá una dirección.' : ''
+    }), [order.buyer.address, order.buyer.email, order.buyer.name, order.buyer.phone]);
+
     const handleInputChange = (event) => {
       const { name, value } = event.target
       setBuyer(prev => ({ ...prev, [name]: value }))
     }
 
-    const handleClick = async () => {
+    const handleSubmit = async (event) => {
+      event.preventDefault()
+      setIsValidated(true)
       if (!isBuyerDataValid()) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Completá tus datos',
-          text: 'Por favor ingresá nombre, email válido, teléfono y dirección para continuar.'
-        })
         return
       }
 
@@ -97,7 +106,7 @@ export default function Cart() {
                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                 </svg></Button></Link>
 
-                <Form className="checkout-form">
+                <Form className="checkout-form" noValidate onSubmit={handleSubmit}>
                  <h2 className="checkout-title">Datos para finalizar compra</h2>
                  <Form.Group className="mb-2" controlId="checkoutName">
                    <Form.Control
@@ -106,8 +115,10 @@ export default function Cart() {
                      value={buyer.name}
                      placeholder="Nombre y apellido"
                      onChange={handleInputChange}
+                     isInvalid={isValidated && Boolean(fieldErrors.name)}
                      required
                    />
+                   <Form.Control.Feedback type="invalid">{fieldErrors.name}</Form.Control.Feedback>
                  </Form.Group>
                  <Form.Group className="mb-2" controlId="checkoutEmail">
                    <Form.Control
@@ -116,8 +127,10 @@ export default function Cart() {
                      value={buyer.email}
                      placeholder="Email"
                      onChange={handleInputChange}
+                     isInvalid={isValidated && Boolean(fieldErrors.email)}
                      required
                    />
+                   <Form.Control.Feedback type="invalid">{fieldErrors.email}</Form.Control.Feedback>
                  </Form.Group>
                  <Form.Group className="mb-2" controlId="checkoutPhone">
                    <Form.Control
@@ -126,8 +139,10 @@ export default function Cart() {
                      value={buyer.phone}
                      placeholder="Teléfono"
                      onChange={handleInputChange}
+                     isInvalid={isValidated && Boolean(fieldErrors.phone)}
                      required
                    />
+                   <Form.Control.Feedback type="invalid">{fieldErrors.phone}</Form.Control.Feedback>
                  </Form.Group>
                  <Form.Group className="mb-3" controlId="checkoutAddress">
                    <Form.Control
@@ -136,14 +151,15 @@ export default function Cart() {
                      value={buyer.address}
                      placeholder="Dirección"
                      onChange={handleInputChange}
+                     isInvalid={isValidated && Boolean(fieldErrors.address)}
                      required
                    />
+                   <Form.Control.Feedback type="invalid">{fieldErrors.address}</Form.Control.Feedback>
                  </Form.Group>
-                </Form>
-
-                <Button variant="info" onClick={handleClick} disabled={isSubmitting}>
+                 <Button variant="info" type="submit" disabled={isSubmitting}>
                  {isSubmitting ? 'Procesando...' : 'Emitir Compra'}
-                </Button>
+                 </Button>
+                </Form>
                 <Button variant="info" onClick={clearCartWithAlert}>Eliminar Carrito</Button>
        </div>
        </>

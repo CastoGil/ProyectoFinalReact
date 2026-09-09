@@ -1,76 +1,105 @@
-import Swal from 'sweetalert2'
-import React, { useState, useContext} from "react";
-const CartContext= React.createContext([]);
+import Swal from 'sweetalert2';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-export const useCartContext =()=> useContext(CartContext);
+const CART_STORAGE_KEY = 'electrolibre_cart';
+const CartContext = React.createContext([]);
 
-const CartProvider=({children})=>{
-    const [cart , setCart] = useState([]);
-    
-    const addProduct= (item, quantity)=>{
-       if (isInCart(item.id)){
-        setCart(cart.map(product =>{
-            return product.id === item.id? {...product, quantity: product.quantity + quantity }: product
-        })) 
-        }else {
-        setCart([...cart, {...item, quantity}])
+export const useCartContext = () => useContext(CartContext);
+
+const getStoredCart = () => {
+  try {
+    const rawValue = localStorage.getItem(CART_STORAGE_KEY);
+    if (!rawValue) {
+      return [];
     }
+    const parsedValue = JSON.parse(rawValue);
+    return Array.isArray(parsedValue) ? parsedValue : [];
+  } catch {
+    return [];
+  }
+};
+
+const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState(getStoredCart);
+
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart]);
+
+  const isInCart = useCallback((id) => cart.some(product => product.id === id), [cart]);
+
+  const addProduct = useCallback((item, quantity) => {
+    setCart(prevCart => {
+      if (prevCart.some(product => product.id === item.id)) {
+        return prevCart.map(product => (
+          product.id === item.id
+            ? { ...product, quantity: product.quantity + quantity }
+            : product
+        ));
+      }
+      return [...prevCart, { ...item, quantity }];
+    });
+  }, []);
+
+  const totalProducts = useCallback(
+    () => cart.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0),
+    [cart]
+  );
+
+  const totalPrice = useCallback(
+    () => cart.reduce((prev, act) => prev + act.quantity * act.price, 0),
+    [cart]
+  );
+
+  const clearCart = useCallback(() => setCart([]), []);
+
+  const clearCartWithAlert = useCallback(async () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+
+    const result = await swalWithBootstrapButtons.fire({
+      title: '¿Estás seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar carrito',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    });
+
+    if (result.isConfirmed) {
+      clearCart();
+      await swalWithBootstrapButtons.fire('Eliminado', 'Tus productos fueron eliminados.', 'success');
     }
+  }, [clearCart]);
 
-    const totalProducts=()=> cart.reduce((acumulador, productoActual)=> acumulador + productoActual.quantity, 0);
+  const removeProduct = useCallback((id) => {
+    setCart(prevCart => prevCart.filter(product => product.id !== id));
+  }, []);
 
-    const totalPrice=()=>{ 
-        return cart.reduce((prev, act)=> prev + act.quantity * act.price, 0)};
-    
-    const clearCart =() => setCart([])
-    const clearCartWithAlert =() => {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-          })
-          
-          swalWithBootstrapButtons.fire({
-            title: 'Estas Seguro?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'SI, Deseo Eliminarlo!',
-            cancelButtonText: 'No, Cancelo!',
-            reverseButtons: true
-          }).then((result) => {
-            if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire(
-                'Borrado!',
-                'Tus Productos han sido Eliminados',
-                'success',
-                setCart([])
-              )
-            } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
-            ) {
-              swalWithBootstrapButtons.fire(
-                'Cancelado',
-                'Continua Con la Compra :)',
-                'error'
-              )
-            }
-          })
-        
-        
-        };
+  const value = useMemo(
+    () => ({
+      clearCartWithAlert,
+      isInCart,
+      removeProduct,
+      addProduct,
+      totalProducts,
+      totalPrice,
+      cart,
+      clearCart
+    }),
+    [addProduct, cart, clearCart, clearCartWithAlert, isInCart, removeProduct, totalPrice, totalProducts]
+  );
 
-    const isInCart=(id) => cart.find(product =>product.id === id)? true:false;
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
+  );
+};
 
-    const removeProduct = (id) => setCart(cart.filter(product => product.id !== id));
-
-    return(
-        <CartContext.Provider value={{ clearCartWithAlert, isInCart, removeProduct, addProduct, totalProducts,totalPrice, cart, clearCart}}>
-            {children}
-        </CartContext.Provider>
-    )
-
-}
 export default CartProvider;
