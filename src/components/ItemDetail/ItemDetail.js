@@ -22,7 +22,7 @@ const ItemDetail = memo(({product}) => {
         </div>
         <div className="containerDetail">
             <div className="detail">
-                <img className="detail-img" src={product.imgDetail} alt=""></img>
+                <img className="detail-img" src={product.imgDetail} alt={product.title}></img>
             </div>
             <Card>
             <Card.Header>
@@ -63,10 +63,10 @@ const ItemDetail = memo(({product}) => {
             </Card.Body>
             </Card>
             <div className="detail">
-                <img className="detail-img" src={product.imgDetail2} alt=""></img>
+                <img className="detail-img" src={product.imgDetail2} alt={`${product.title} vista 2`}></img>
             </div>
             <div className="detail">
-                <img className="detail-img" src={product.imgDetail3} alt=""></img>
+                <img className="detail-img" src={product.imgDetail3} alt={`${product.title} vista 3`}></img>
             </div>
         </div></>
     )

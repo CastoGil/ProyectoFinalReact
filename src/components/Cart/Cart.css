@@ -13,4 +13,19 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-around;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.checkout-form{
+    width: min(420px, 100%);
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-title{
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
 }

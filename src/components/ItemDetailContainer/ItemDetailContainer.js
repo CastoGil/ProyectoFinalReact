@@ -11,19 +11,37 @@ const ItemDetailContainer=()=>{
     const {detailid}=useParams()
 
     useEffect(()=>{
+        let isMounted = true
         setLoading(true)
+        setError(null)
         getProductById(detailid)
-            .then(data => setData(data))
-            .catch(err => setError(err))
-            .finally(() => setLoading(false))
+            .then(data => {
+                if (isMounted) {
+                    setData(data)
+                }
+            })
+            .catch(err => {
+                if (isMounted) {
+                    setError(err)
+                }
+            })
+            .finally(() => {
+                if (isMounted) {
+                    setLoading(false)
+                }
+            })
+
+        return () => {
+            isMounted = false
+        }
 
     },[detailid])
    
     
     return(
         <div>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error.message}</p>}
+            {loading && <p>Cargando detalle...</p>}
+            {error && <p>No pudimos cargar el detalle. {error.message}</p>}
             {!loading && !error && <ItemDetail product={detail}/>}
         </div>
         )  
